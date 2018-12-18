@@ -30,9 +30,9 @@ namespace projectXService
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertSession(Session instance);
-    partial void UpdateSession(Session instance);
-    partial void DeleteSession(Session instance);
+    partial void InsertQuestionsAndAnswer(QuestionsAndAnswer instance);
+    partial void UpdateQuestionsAndAnswer(QuestionsAndAnswer instance);
+    partial void DeleteQuestionsAndAnswer(QuestionsAndAnswer instance);
     #endregion
 		
 		public projectXLinqDataContext() : 
@@ -65,148 +65,148 @@ namespace projectXService
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Session> Sessions
+		public System.Data.Linq.Table<QuestionsAndAnswer> QuestionsAndAnswers
 		{
 			get
 			{
-				return this.GetTable<Session>();
+				return this.GetTable<QuestionsAndAnswer>();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sessions")]
-	public partial class Session : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QuestionsAndAnswers")]
+	public partial class QuestionsAndAnswer : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _SessionId;
+		private int _QuestionID;
 		
-		private string _CurrentQuestion;
+		private string _Question;
 		
-		private string _CurrentAnswer;
+		private string _Answer;
 		
-		private System.Nullable<int> _CurrentRemainingTime;
+		private string _Diagram;
 		
-		private System.Nullable<int> _CurrentNumberOfUsers;
+		private System.Nullable<int> _TimeInSeconds;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnSessionIdChanging(int value);
-    partial void OnSessionIdChanged();
-    partial void OnCurrentQuestionChanging(string value);
-    partial void OnCurrentQuestionChanged();
-    partial void OnCurrentAnswerChanging(string value);
-    partial void OnCurrentAnswerChanged();
-    partial void OnCurrentRemainingTimeChanging(System.Nullable<int> value);
-    partial void OnCurrentRemainingTimeChanged();
-    partial void OnCurrentNumberOfUsersChanging(System.Nullable<int> value);
-    partial void OnCurrentNumberOfUsersChanged();
+    partial void OnQuestionIDChanging(int value);
+    partial void OnQuestionIDChanged();
+    partial void OnQuestionChanging(string value);
+    partial void OnQuestionChanged();
+    partial void OnAnswerChanging(string value);
+    partial void OnAnswerChanged();
+    partial void OnDiagramChanging(string value);
+    partial void OnDiagramChanged();
+    partial void OnTimeInSecondsChanging(System.Nullable<int> value);
+    partial void OnTimeInSecondsChanged();
     #endregion
 		
-		public Session()
+		public QuestionsAndAnswer()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SessionId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int SessionId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuestionID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int QuestionID
 		{
 			get
 			{
-				return this._SessionId;
+				return this._QuestionID;
 			}
 			set
 			{
-				if ((this._SessionId != value))
+				if ((this._QuestionID != value))
 				{
-					this.OnSessionIdChanging(value);
+					this.OnQuestionIDChanging(value);
 					this.SendPropertyChanging();
-					this._SessionId = value;
-					this.SendPropertyChanged("SessionId");
-					this.OnSessionIdChanged();
+					this._QuestionID = value;
+					this.SendPropertyChanged("QuestionID");
+					this.OnQuestionIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentQuestion", DbType="NVarChar(MAX)")]
-		public string CurrentQuestion
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Question", DbType="NVarChar(MAX)")]
+		public string Question
 		{
 			get
 			{
-				return this._CurrentQuestion;
+				return this._Question;
 			}
 			set
 			{
-				if ((this._CurrentQuestion != value))
+				if ((this._Question != value))
 				{
-					this.OnCurrentQuestionChanging(value);
+					this.OnQuestionChanging(value);
 					this.SendPropertyChanging();
-					this._CurrentQuestion = value;
-					this.SendPropertyChanged("CurrentQuestion");
-					this.OnCurrentQuestionChanged();
+					this._Question = value;
+					this.SendPropertyChanged("Question");
+					this.OnQuestionChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentAnswer", DbType="NVarChar(MAX)")]
-		public string CurrentAnswer
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Answer", DbType="NVarChar(MAX)")]
+		public string Answer
 		{
 			get
 			{
-				return this._CurrentAnswer;
+				return this._Answer;
 			}
 			set
 			{
-				if ((this._CurrentAnswer != value))
+				if ((this._Answer != value))
 				{
-					this.OnCurrentAnswerChanging(value);
+					this.OnAnswerChanging(value);
 					this.SendPropertyChanging();
-					this._CurrentAnswer = value;
-					this.SendPropertyChanged("CurrentAnswer");
-					this.OnCurrentAnswerChanged();
+					this._Answer = value;
+					this.SendPropertyChanged("Answer");
+					this.OnAnswerChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentRemainingTime", DbType="Int")]
-		public System.Nullable<int> CurrentRemainingTime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diagram", DbType="NVarChar(MAX)")]
+		public string Diagram
 		{
 			get
 			{
-				return this._CurrentRemainingTime;
+				return this._Diagram;
 			}
 			set
 			{
-				if ((this._CurrentRemainingTime != value))
+				if ((this._Diagram != value))
 				{
-					this.OnCurrentRemainingTimeChanging(value);
+					this.OnDiagramChanging(value);
 					this.SendPropertyChanging();
-					this._CurrentRemainingTime = value;
-					this.SendPropertyChanged("CurrentRemainingTime");
-					this.OnCurrentRemainingTimeChanged();
+					this._Diagram = value;
+					this.SendPropertyChanged("Diagram");
+					this.OnDiagramChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentNumberOfUsers", DbType="Int")]
-		public System.Nullable<int> CurrentNumberOfUsers
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeInSeconds", DbType="Int")]
+		public System.Nullable<int> TimeInSeconds
 		{
 			get
 			{
-				return this._CurrentNumberOfUsers;
+				return this._TimeInSeconds;
 			}
 			set
 			{
-				if ((this._CurrentNumberOfUsers != value))
+				if ((this._TimeInSeconds != value))
 				{
-					this.OnCurrentNumberOfUsersChanging(value);
+					this.OnTimeInSecondsChanging(value);
 					this.SendPropertyChanging();
-					this._CurrentNumberOfUsers = value;
-					this.SendPropertyChanged("CurrentNumberOfUsers");
-					this.OnCurrentNumberOfUsersChanged();
+					this._TimeInSeconds = value;
+					this.SendPropertyChanged("TimeInSeconds");
+					this.OnTimeInSecondsChanged();
 				}
 			}
 		}

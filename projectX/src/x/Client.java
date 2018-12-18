@@ -16,6 +16,13 @@ public class Client implements Runnable{
 	private boolean ProcessingClient;
 	private boolean SessionAlive;
 	private String[] sessionsArray;
+	private volatile boolean truee;
+	public boolean isTruee() {
+		return truee;
+	}
+	synchronized void setTruee(boolean truee) {
+		this.truee = truee;
+	}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -42,6 +49,9 @@ public class Client implements Runnable{
 						case "GET_SESSION_CURRENT_DATA":
 							GetSessionCurrentData();
 							break;
+	                    case "SUBMIT_SESSION_ANSWER":
+	                    	 ProcessSubmitSessionAnswerCommand();
+	                        break;
 						case "QUIT":
 							ProcessingClient = false;
 							try {
@@ -86,15 +96,13 @@ public class Client implements Runnable{
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
+
 					while(SessionAlive == true)
 					{
 						try 
 						{
-							String sessionID = sessionsArray[Integer.parseInt(session)];
-							GetSessionData data = new GetSessionData();
-							String[] dataArray = data.DoTheWork(URL, sessionID);
-							out.writeUTF(dataArray[1]); // Use this in order to handle the exception here if the peer terminates the connection in an unusual way
-							Thread.sleep(5000);
+							out.writeUTF(String.valueOf(truee));
+							Thread.sleep(500);
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							SessionAlive = false;	// Discontinue the loop
@@ -110,6 +118,18 @@ public class Client implements Runnable{
 		}
 
 	}
+    private void ProcessSubmitSessionAnswerCommand()
+    {
+    	
+		try {
+			String SessionAnswer = in.readUTF();
+	    	consoleLike.append(SessionAnswer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+    }
 	// Other methods
 	private void sendMessage(String message)
 	{

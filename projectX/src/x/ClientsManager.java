@@ -7,6 +7,13 @@ import java.net.*;
 public class ClientsManager implements Runnable{
 	private TextArea consoleLike;
 	private String URL;
+	private volatile boolean truee;
+	public boolean isTruee() {
+		return truee;
+	}
+	synchronized void setTruee(boolean truee) {
+		this.truee = truee;
+	}
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -20,6 +27,7 @@ public class ClientsManager implements Runnable{
 				client.setConsoleLike(consoleLike);
 				client.setURL(URL);
 				client.setSocket(ClientConnection);
+				client.setTruee(truee);
 				new Thread(client).start();
 			}
 		} catch (Exception e) {

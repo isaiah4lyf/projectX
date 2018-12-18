@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="projectXService" Class="projectXLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=LAPTOP-VUH2K375\SQLEXPRESS;Initial Catalog=projectXService;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="projectXServiceConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Sessions" Member="Sessions">
-    <Type Name="Session">
-      <Column Name="SessionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="CurrentQuestion" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CurrentAnswer" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CurrentRemainingTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CurrentNumberOfUsers" Type="System.Int32" DbType="Int" CanBeNull="true" />
+  <Table Name="dbo.QuestionsAndAnswers" Member="QuestionsAndAnswers">
+    <Type Name="QuestionsAndAnswer">
+      <Column Name="QuestionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Question" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Answer" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Diagram" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TimeInSeconds" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

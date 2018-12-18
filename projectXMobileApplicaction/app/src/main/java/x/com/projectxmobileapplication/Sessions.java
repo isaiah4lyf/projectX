@@ -28,9 +28,9 @@ public class Sessions extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),JoinSession.class);
-                intent.putExtra("Session","0");
-                startActivity(intent);
+                login.setEnabled(false);
+                preferences.edit().putString("Command", "JOIN_SESSION").commit();
+                new joinSession().execute();
             }
         });
     }
@@ -59,6 +59,42 @@ public class Sessions extends AppCompatActivity {
                 login.setEnabled(true);
                 textView.setText(result);
                 preferences.edit().putBoolean("ResultEmpty",true).commit();
+            }
+        }
+    }
+    private class joinSession extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            //if you want, start progress dialog here
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            String result = preferences.getString("Result", "Empty");
+            boolean ResultEmpty = preferences.getBoolean("ResultEmpty", true);
+            while (ResultEmpty == true) {
+                ResultEmpty = preferences.getBoolean("ResultEmpty", true);
+                result = preferences.getString("Result", "Empty");
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            //if you started progress dialog dismiss it here
+            boolean ResultEmpty = preferences.getBoolean("ResultEmpty", true);
+            if (ResultEmpty == false) {
+                if(result.equals("Session Full, Join Another session!!!!!"))
+                {
+                    textView.setText(result);
+                }
+                else
+                {
+                    Intent intent = new Intent(getApplicationContext(),JoinSession.class);
+                    intent.putExtra("Session","0");
+                    startActivity(intent);
+                }
+                login.setEnabled(true);
             }
         }
     }

@@ -39,8 +39,14 @@ public class ConnectToServer implements Runnable{
                     case  "GET_SESSIONS":
                         ProcessCommand(Command);
                         break;
-                    case "GET_SESSION_CURRENT_DATA":
+                    case "JOIN_SESSION":
+                        ProcessJoinSessionComand(Command);
+                        break;
+                    case "SESSION_JOINED":
                         ProcessGetCurrentQuestionCommand(Command);
+                        break;
+                    case "SUBMIT_SESSION_ANSWER":
+                        ProcessSubmitSessionAnswerCommand(Command);
                         break;
                     case "QUIT":
                         sendCommand(Command);
@@ -66,6 +72,22 @@ public class ConnectToServer implements Runnable{
         preferences.edit().putBoolean("ResultEmpty",false).commit();
         preferences.edit().putString("Command", "").commit();
     }
+    private void ProcessSubmitSessionAnswerCommand(String Command)
+    {
+        sendCommand(Command);
+        sendCommand(preferences.getString("SessionAnswer",""));
+        preferences.edit().putString("Command", "").commit();
+    }
+    private void ProcessJoinSessionComand(String Command)
+    {
+        sendCommand(Command);
+        sendCommand("0");
+        String result = readResponse();
+        preferences.edit().putString("Result",result).commit();
+        preferences.edit().putBoolean("ResultEmpty",false).commit();
+        preferences.edit().putString("Command", "").commit();
+    }
+
     private void ProcessGetCurrentQuestionCommand(String Command)
     {
         sendCommand(Command);

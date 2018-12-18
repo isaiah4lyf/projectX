@@ -18,55 +18,56 @@ namespace projectXService
 	{
 		private projectXLinqDataContext linq = new projectXLinqDataContext();
 		[WebMethod]
-		public string CreateSession(string CurrentQuestion, string CurrentAnswer,string CurrentRemainingTime,string CurrentNumberOfUsers)
+		public string InsertQuestion(string Question, string Answer,string Diagram,string TimeInSeconds)
 		{
-			Session session = new Session();
-			session.CurrentQuestion = CurrentQuestion;
-			session.CurrentAnswer = CurrentAnswer;
-			session.CurrentRemainingTime = Convert.ToInt32(CurrentRemainingTime);
-			session.CurrentNumberOfUsers = Convert.ToInt32(CurrentNumberOfUsers);
-			linq.Sessions.InsertOnSubmit(session);
+			QuestionsAndAnswer qustion = new QuestionsAndAnswer();
+			qustion.Question = Question;
+			qustion.Answer = Answer;
+			qustion.Diagram = Diagram;
+			qustion.TimeInSeconds = Convert.ToInt32(TimeInSeconds);
+			linq.QuestionsAndAnswers.InsertOnSubmit(qustion);
 			linq.SubmitChanges();
 			return "true";
 		}
 		[WebMethod]
-		public string[] GetSessionData(string sessionID)
+		public string UpdateQuestion(string QuestionID, string Question, string Answer, string Diagram, string TimeInSeconds)
 		{
-			Session session = (from Session in linq.Sessions
-							   where Session.SessionId == Convert.ToInt32(sessionID)
-							   select Session).First();
-			string[] sessionArray = new string[5];
-			sessionArray[0] = session.SessionId.ToString();
-			sessionArray[1] = session.CurrentQuestion;
-			sessionArray[2] = session.CurrentAnswer;
-			sessionArray[3] = session.CurrentRemainingTime.ToString();
-			sessionArray[4] = session.CurrentNumberOfUsers.ToString();
-			return sessionArray;
-		}
-		[WebMethod]
-		public string UpdateSessionData(string SessionID,string CurrentQuestion, string CurrentAnswer, string CurrentRemainingTime, string CurrentNumberOfUsers)
-		{
-			Session session = (from Session in linq.Sessions
-							   where Session.SessionId == Convert.ToInt32(SessionID)
-							   select Session).First();
-			session.CurrentQuestion = CurrentQuestion;
-			session.CurrentAnswer = CurrentAnswer;
-			session.CurrentRemainingTime = Convert.ToInt32(CurrentRemainingTime);
-			session.CurrentNumberOfUsers = Convert.ToInt32(CurrentNumberOfUsers);
+			QuestionsAndAnswer qustion = (from QuestionsAndAnswer in linq.QuestionsAndAnswers
+										  where QuestionsAndAnswer.QuestionID == Convert.ToInt32(QuestionID)
+										  select QuestionsAndAnswer).First();
+			qustion.Question = Question;
+			qustion.Answer = Answer;
+			qustion.Diagram = Diagram;
+			qustion.TimeInSeconds = Convert.ToInt32(TimeInSeconds);
 			linq.SubmitChanges();
 			return "true";
 		}
 		[WebMethod]
-		public string[] GetAllSessions()
+		public string[] GetQuestion(string QuestionID)
 		{
-			List<Session> sessions = (from Session in linq.Sessions
-									  select Session).ToList();
-			string[] sessionArray = new string[sessions.Count];
-			for(int i = 0; i < sessions.Count; i++)
+			QuestionsAndAnswer qustion = (from QuestionsAndAnswer in linq.QuestionsAndAnswers
+										  where QuestionsAndAnswer.QuestionID == Convert.ToInt32(QuestionID)
+										  select QuestionsAndAnswer).First();
+			string[] questionArray = new string[5];
+			questionArray[0] = qustion.QuestionID.ToString();
+			questionArray[1] = qustion.Question;
+			questionArray[2] = qustion.Answer;
+			questionArray[3] = qustion.Diagram;
+			questionArray[4] = qustion.TimeInSeconds.ToString();
+			return questionArray;
+		}
+		[WebMethod]
+		public string[] GetAllQeustions()
+		{
+			List<QuestionsAndAnswer> questions = (from QuestionsAndAnswer in linq.QuestionsAndAnswers
+												  select QuestionsAndAnswer).ToList();
+			string[] QuestionsIDsArray = new string[questions.Count];
+			for(int i = 0; i < questions.Count; i++)
 			{
-				sessionArray[i] = sessions.ElementAt(i).SessionId.ToString();
+				QuestionsIDsArray[i] = questions.ElementAt(i).QuestionID.ToString();
 			}
-			return sessionArray;
+			return QuestionsIDsArray;
 		}
+
 	}
 }
