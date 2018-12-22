@@ -2,10 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="projectXLinq">
   <DataContextMoniker Name="/projectXLinqDataContext" />
   <nestedChildShapes>
-    <classShape Id="626dafc9-9f8b-437a-a11b-f049c651d318" absoluteBounds="2.125, 1.25, 2, 1.7708968098958331">
+    <classShape Id="b0c3a52f-8882-4ec2-b5c3-ff44f934f945" absoluteBounds="3, 0.625, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/projectXLinqDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7ea43f10-fd24-4cc1-9581-7796951744cf" absoluteBounds="3.015, 1.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5d76a930-978b-46e4-91b4-9ea78a18111e" absoluteBounds="0.5, 0.75, 2, 2.1554996744791666">
       <DataClassMoniker Name="/projectXLinqDataContext/QuestionsAndAnswer" />
       <nestedChildShapes>
-        <elementListCompartment Id="74175cd3-b57e-4629-b562-d457a6168971" absoluteBounds="2.14, 1.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="4e3a5f07-da41-42c5-81e1-83e7b19f0d45" absoluteBounds="0.51500000000000012, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

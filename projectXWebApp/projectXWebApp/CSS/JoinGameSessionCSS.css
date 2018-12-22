@@ -1,0 +1,93 @@
+﻿nav {
+	margin: auto;
+	width: 80%;
+	height: 1%;
+	border: 3px solid #73AD21;
+	padding: 10px;
+}
+
+#content1 {
+	margin: auto;
+	width: 80%;
+	overflow-y: scroll;
+	height: 500px;
+}
+
+#topNav {
+	border-radius: 0px 0px 250px 250px;
+}
+
+#bottomNav {
+	border-radius: 150px 150px 0px 0px;
+}
+
+#inputBox {
+	width: 100%;
+	height: 80%;
+}
+
+#textMessage {
+	position: relative;
+	bottom: 10px;
+	width: 850px;
+	height: 100%;
+}
+
+#time {
+	position: relative;
+	bottom: 1.5px;
+	width: 40px;
+	height: 19px;
+	text-align: left;
+	font-size: 12px
+}
+
+#button {
+	position: relative;
+	bottom: 10px;
+	width: 150px;
+	height: 100%;
+}
+
+body {
+	background-color: black;
+}
+
+.fa {
+	color: white;
+	font-size: 20px;
+}
+
+a {
+	padding-right: 30px;
+}
+
+#ff {
+	position: relative;
+	left: 40px;
+	top: 5px;
+}
+
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #FF0000;
+}
+
+b {
+	text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+}
+
+.column {
+	float: left;
+}
+
+.div1 {
+	width: 20px;
+	height: 20px;
+	box-sizing: border-box;
+	margin-right: 8px;
+}
