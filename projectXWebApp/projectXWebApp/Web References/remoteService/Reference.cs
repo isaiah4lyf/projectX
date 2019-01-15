@@ -47,6 +47,12 @@ namespace projectXWebApp.remoteService {
         
         private System.Threading.SendOrPostCallback LoginOperationCompleted;
         
+        private System.Threading.SendOrPostCallback InsertPostOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllPostsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPostOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -111,6 +117,15 @@ namespace projectXWebApp.remoteService {
         
         /// <remarks/>
         public event LoginCompletedEventHandler LoginCompleted;
+        
+        /// <remarks/>
+        public event InsertPostCompletedEventHandler InsertPostCompleted;
+        
+        /// <remarks/>
+        public event GetAllPostsCompletedEventHandler GetAllPostsCompleted;
+        
+        /// <remarks/>
+        public event GetPostCompletedEventHandler GetPostCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertQuestion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -428,6 +443,97 @@ namespace projectXWebApp.remoteService {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsertPost", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] InsertPost(string Title, string Description, string Diagram, string UserID) {
+            object[] results = this.Invoke("InsertPost", new object[] {
+                        Title,
+                        Description,
+                        Diagram,
+                        UserID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPostAsync(string Title, string Description, string Diagram, string UserID) {
+            this.InsertPostAsync(Title, Description, Diagram, UserID, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPostAsync(string Title, string Description, string Diagram, string UserID, object userState) {
+            if ((this.InsertPostOperationCompleted == null)) {
+                this.InsertPostOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPostOperationCompleted);
+            }
+            this.InvokeAsync("InsertPost", new object[] {
+                        Title,
+                        Description,
+                        Diagram,
+                        UserID}, this.InsertPostOperationCompleted, userState);
+        }
+        
+        private void OnInsertPostOperationCompleted(object arg) {
+            if ((this.InsertPostCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPostCompleted(this, new InsertPostCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllPosts", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] GetAllPosts() {
+            object[] results = this.Invoke("GetAllPosts", new object[0]);
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllPostsAsync() {
+            this.GetAllPostsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllPostsAsync(object userState) {
+            if ((this.GetAllPostsOperationCompleted == null)) {
+                this.GetAllPostsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllPostsOperationCompleted);
+            }
+            this.InvokeAsync("GetAllPosts", new object[0], this.GetAllPostsOperationCompleted, userState);
+        }
+        
+        private void OnGetAllPostsOperationCompleted(object arg) {
+            if ((this.GetAllPostsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllPostsCompleted(this, new GetAllPostsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetPost", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] GetPost(string PostID) {
+            object[] results = this.Invoke("GetPost", new object[] {
+                        PostID});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPostAsync(string PostID) {
+            this.GetPostAsync(PostID, null);
+        }
+        
+        /// <remarks/>
+        public void GetPostAsync(string PostID, object userState) {
+            if ((this.GetPostOperationCompleted == null)) {
+                this.GetPostOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPostOperationCompleted);
+            }
+            this.InvokeAsync("GetPost", new object[] {
+                        PostID}, this.GetPostOperationCompleted, userState);
+        }
+        
+        private void OnGetPostOperationCompleted(object arg) {
+            if ((this.GetPostCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPostCompleted(this, new GetPostCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -667,6 +773,84 @@ namespace projectXWebApp.remoteService {
         private object[] results;
         
         internal LoginCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void InsertPostCompletedEventHandler(object sender, InsertPostCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPostCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPostCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void GetAllPostsCompletedEventHandler(object sender, GetAllPostsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllPostsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllPostsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    public delegate void GetPostCompletedEventHandler(object sender, GetPostCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.3056.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPostCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPostCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

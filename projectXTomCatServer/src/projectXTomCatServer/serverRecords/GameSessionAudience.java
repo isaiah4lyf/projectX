@@ -5,46 +5,30 @@ import java.util.List;
 
 import javax.websocket.Session;
 
-import databaseManagement.databaseRecords.QuestionRecord;
 
-public class GameSession {
+public class GameSessionAudience {
 	private int GameSessionID;
-	private int GameSessionCurrentQuestionID;
-	private int GameSessionNumberOfUsers;
+	private int GameSessionAudienceNumber;
 	private List<Client> SessionClientclients;
-	private QuestionRecord CurrentQuestion;
-	
-	public QuestionRecord getCurrentQuestion() {
-		return CurrentQuestion;
-	}
-	public void setCurrentQuestion(QuestionRecord currentQuestion) {
-		CurrentQuestion = currentQuestion;
-	}
-	public List<Client> getSessionClientclients() {
-		return SessionClientclients;
-	}
-	public void setSessionClientclients(List<Client> clients) {
-		this.SessionClientclients = clients;
-	}
 	public int getGameSessionID() {
 		return GameSessionID;
 	}
 	public void setGameSessionID(int gameSessionID) {
 		GameSessionID = gameSessionID;
 	}
-	public int getGameSessionCurrentQuestionID() {
-		return GameSessionCurrentQuestionID;
+	public int getGameSessionAudienceNumber() {
+		return GameSessionAudienceNumber;
 	}
-	public void setGameSessionCurrentQuestionID(int gameSessionCurrentQuestionID) {
-		GameSessionCurrentQuestionID = gameSessionCurrentQuestionID;
+	public void setGameSessionAudienceNumber(int gameSessionAudienceNumber) {
+		GameSessionAudienceNumber = gameSessionAudienceNumber;
 	}
-	public int getGameSessionNumberOfUsers() {
-		return GameSessionNumberOfUsers;
+	public List<Client> getSessionClientclients() {
+		return SessionClientclients;
 	}
-	public void setGameSessionNumberOfUsers(int gameSessionNumberOfUsers) {
-		GameSessionNumberOfUsers = gameSessionNumberOfUsers;
+	public void setSessionClientclients(List<Client> sessionClientclients) {
+		SessionClientclients = sessionClientclients;
 	}
-	public void SendSessionClientsMessage(String Message)
+	public void SendSessionAudienceMessage(String Message)
 	{
 		for(int i = 0; i < SessionClientclients.size(); i++)
 		{

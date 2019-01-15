@@ -1,8 +1,7 @@
 ﻿var webSocket = new WebSocket("ws://192.168.43.175:8080/projectXTomCatServer/serverendpoint");
-var messageBox = document.getElementById("textMessage");
 var query = getQueryParams(document.location.search);
-var GameSessionID = query.feawtrsrgbdfsfrvteastd;
-var UserID = query.vsrtdyfugfdgsfd;
+var GameSessionID = 0;
+var UserID = 1;
 webSocket.onopen = function (message) { processOpen(message); };
 webSocket.onclose = function (message) { processClose(message); };
 webSocket.onerror = function (message) { processError(message); };
@@ -10,16 +9,12 @@ webSocket.onmessage = function (message) { processMessage(message); };
 var JustJoin = true;
 function processOpen(message) {
 
-    webSocket.send("JOIN_GAME_SESSION:::::::::-::::::::::::::::-:::::::::::-:::::-::::" + GameSessionID + ":::::::::-::::::::::::::::-:::::::::::-:::::-::::" + UserID);
+    webSocket.send("VIEW_POST:::::::::-::::::::::::::::-:::::::::::-:::::-::::" + GameSessionID + ":::::::::-::::::::::::::::-:::::::::::-:::::-::::" + UserID);
 }
 function processClose(message) {
     webSocket.send("Client disconnected........");
 }
 function processError(message) {
-}
-function sendMessage() {
-    webSocket.send(messageBox.value + ":::::::::-::::::::::::::::-:::::::::::-:::::-::::" + GameSessionID);
-    messageBox.value = "";
 }
 function processMessage(message) {
     if (message.data.startsWith(":::::::::-::::::::::::::::-:::::::::::-:::::-::::")) {
@@ -112,7 +107,7 @@ function processMessage(message) {
                     var answerTokens = message.data.split(":::::::-::::::::-:::::::::::-:::::::-::::");
                     document.getElementById("content").innerHTML += "<label style='color:green;margin-right:5px;'>" + answerTokens[1] + "</label><i class='fa fa-check' style='color:green;font-size:16px'></i><br/>";
                 }
-                else if (message.data.includes(":::::-::::::::-:::::::-:::::::-::::::")){
+                else if (message.data.includes(":::::-::::::::-:::::::-:::::::-::::::")) {
                     document.getElementById("content").innerHTML += "<label style='color:white'>" + message.data.split(":::::-::::::::-:::::::-:::::::-::::::")[1] + "</label><br/>";
                 }
                 else {
@@ -136,10 +131,7 @@ function getQueryParams(qs) {
     }
     return params;
 }
-messageBox.focus();
 function closeIt() {
-    messageBox.value = "esf";
     return "Closing or refreshing windows pop up....";
-
 }
 window.onbeforeunload = closeIt;

@@ -6,6 +6,20 @@ public class QuestionRecord {
 	private String Answer;
 	private String Diagram;
 	private int TimeInSeconds;
+	private int Points;
+	private String Category;
+	public String getCategory() {
+		return Category;
+	}
+	public void setCategory(String category) {
+		Category = category;
+	}
+	public int getPoints() {
+		return Points;
+	}
+	public void setPoints(int points) {
+		Points = points;
+	}
 	public String getQuestionID() {
 		return QuestionID;
 	}

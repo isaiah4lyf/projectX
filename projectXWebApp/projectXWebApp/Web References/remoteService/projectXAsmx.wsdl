@@ -154,6 +154,47 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="InsertPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Diagram" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertPostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertPostResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPosts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllPostsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPostsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="InsertQuestionSoapIn">
@@ -210,6 +251,24 @@
   <wsdl:message name="LoginSoapOut">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
+  <wsdl:message name="InsertPostSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertPost" />
+  </wsdl:message>
+  <wsdl:message name="InsertPostSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPostsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPosts" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPostsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPostsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPost" />
+  </wsdl:message>
+  <wsdl:message name="GetPostSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostResponse" />
+  </wsdl:message>
   <wsdl:portType name="projectXAsmxSoap">
     <wsdl:operation name="InsertQuestion">
       <wsdl:input message="tns:InsertQuestionSoapIn" />
@@ -246,6 +305,18 @@
     <wsdl:operation name="Login">
       <wsdl:input message="tns:LoginSoapIn" />
       <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPost">
+      <wsdl:input message="tns:InsertPostSoapIn" />
+      <wsdl:output message="tns:InsertPostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPosts">
+      <wsdl:input message="tns:GetAllPostsSoapIn" />
+      <wsdl:output message="tns:GetAllPostsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPost">
+      <wsdl:input message="tns:GetPostSoapIn" />
+      <wsdl:output message="tns:GetPostSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="projectXAsmxSoap" type="tns:projectXAsmxSoap">
@@ -331,6 +402,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="InsertPost">
+      <soap:operation soapAction="http://tempuri.org/InsertPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPosts">
+      <soap:operation soapAction="http://tempuri.org/GetAllPosts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPost">
+      <soap:operation soapAction="http://tempuri.org/GetPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="projectXAsmxSoap12" type="tns:projectXAsmxSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -408,6 +506,33 @@
     </wsdl:operation>
     <wsdl:operation name="Login">
       <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPost">
+      <soap12:operation soapAction="http://tempuri.org/InsertPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPosts">
+      <soap12:operation soapAction="http://tempuri.org/GetAllPosts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPost">
+      <soap12:operation soapAction="http://tempuri.org/GetPost" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

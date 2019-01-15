@@ -67,11 +67,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Web References\remoteService\projectXAsmx.wsdl" />
     <Content Include="CSS\JoinGameSessionCSS.css" />
+    <Content Include="CSS\ViewPost.css" />
     <Content Include="Javascript\GetGamseSessions.js" />
+    <Content Include="Javascript\indexScript.js" />
     <Content Include="Javascript\JoinGameSession.js" />
+    <Content Include="Javascript\ViewPost.js" />
     <Content Include="SignUp.aspx" />
+    <None Include="Web References\remoteService\projectXAsmx.wsdl" />
+    <Content Include="ViewPost.aspx" />
     <Content Include="Web References\remoteService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -149,6 +153,13 @@
     </Compile>
     <Compile Include="SignUp.aspx.designer.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPost.aspx.cs">
+      <DependentUpon>ViewPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewPost.aspx.designer.cs">
+      <DependentUpon>ViewPost.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\remoteService\Reference.cs">
       <AutoGen>True</AutoGen>

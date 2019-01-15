@@ -10,7 +10,7 @@
 	margin: auto;
 	width: 60%;
 	overflow-y: scroll;
-	height: 680px;
+	height: 695px;
 	background-color: black;
 }
 
@@ -92,6 +92,7 @@ b {
 	box-sizing: border-box;
 	margin-right: 8px;
 }
+
 #liveBox {
 	position: absolute;
 	right: 10px;
@@ -102,12 +103,14 @@ b {
 	background-color: #f1f1f1;
 	border-radius: 5px;
 }
+
 #liveInput {
 	position: absolute;
 	bottom: 0px;
 	height: 30px;
 	width: 70%
 }
+
 #liveButton {
 	position: absolute;
 	bottom: 1px;
@@ -115,6 +118,7 @@ b {
 	height: 28px;
 	width: 30%
 }
+
 #chatBox {
 	position: absolute;
 	right: 10px;
@@ -142,15 +146,17 @@ b {
 }
 
 .darker {
-	margin:auto;
+	margin: auto;
 	width: 95%;
 	border-radius: 5px;
 	border-color: #ccc;
 	background-color: #ddd;
 }
+
 .time-right {
 	color: #aaa;
 }
+
 #menu {
 	position: absolute;
 	top: 18%;

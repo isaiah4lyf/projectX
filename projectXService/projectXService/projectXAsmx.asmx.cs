@@ -192,5 +192,57 @@ namespace projectXService
 				return null;
 			}
 		}
+		[WebMethod]
+		public string[] InsertPost(string Title, string Description, string Diagram, string UserID)
+		{
+			Post post = new Post();
+			post.Title = Title;
+			post.Description = Description;
+			post.Diagram = Diagram;
+			post.UserID = Convert.ToInt32(UserID);
+			DateTime datetime = DateTime.Now;
+			post.DateTime = datetime;
+			linq.Posts.InsertOnSubmit(post);
+			linq.SubmitChanges();
+
+			Post postRuturn = (from Post in linq.Posts
+							   where Post.UserID == Convert.ToInt32(UserID) && Post.DateTime == datetime
+							   select Post).First();
+			string[] postReturnArray = new string[6];
+			postReturnArray[0] = postRuturn.PostID.ToString();
+			postReturnArray[1] = postRuturn.Title;
+			postReturnArray[2] = postRuturn.Description;
+			postReturnArray[3] = postRuturn.Diagram;
+			postReturnArray[4] = postRuturn.UserID.ToString();
+			postReturnArray[5] = postRuturn.DateTime.ToString();
+			return postReturnArray;
+		}
+		[WebMethod]
+		public string[] GetAllPosts()
+		{
+			List<Post> posts = (from Post in linq.Posts
+								select Post).ToList();
+			string[] postsArray = new string[posts.Count];
+			for(int i = 0; i < posts.Count; i++)
+			{
+				postsArray[i] = posts.ElementAt(i).PostID.ToString();
+			}
+			return postsArray;
+		}
+		[WebMethod]
+		public string[] GetPost(string PostID)
+		{
+			Post postRuturn = (from Post in linq.Posts
+							   where Post.PostID == Convert.ToInt32(PostID)
+							   select Post).First();
+			string[] postReturnArray = new string[6];
+			postReturnArray[0] = postRuturn.PostID.ToString();
+			postReturnArray[1] = postRuturn.Title;
+			postReturnArray[2] = postRuturn.Description;
+			postReturnArray[3] = postRuturn.Diagram;
+			postReturnArray[4] = postRuturn.UserID.ToString();
+			postReturnArray[5] = postRuturn.DateTime.ToString();
+			return postReturnArray;
+		}
 	}
 }

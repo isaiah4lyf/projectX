@@ -31,10 +31,10 @@ public class VideoHanderServer {
 	}	
 	
 	@OnMessage
-	public void handleMessage(byte[] message,Session clientSession)
+	public void handleMessage(String message,Session clientSession)
 	{	
 		//String s = new String(message);
-		System.out.println(message.length);
+		System.out.println(message);
 
 
 	}

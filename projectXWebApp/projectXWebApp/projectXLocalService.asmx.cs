@@ -13,15 +13,17 @@ namespace projectXWebApp
 	[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 	[System.ComponentModel.ToolboxItem(false)]
 	// To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-	// [System.Web.Script.Services.ScriptService]
+	[System.Web.Script.Services.ScriptService]
 	public class projectXLocalService : System.Web.Services.WebService
 	{
 		private projectXAsmx remoteService = new projectXAsmx();
 
 		[WebMethod]
-		public string login(string userName,string password)
+		public string[] GetAllPosts()
 		{
-			return "Hello World";
+			string[] array = remoteService.GetAllPosts();
+			Array.Reverse(array);
+			return array;
 		}
 	}
 }

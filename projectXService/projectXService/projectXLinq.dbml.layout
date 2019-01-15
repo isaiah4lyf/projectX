@@ -14,5 +14,11 @@
         <elementListCompartment Id="4e3a5f07-da41-42c5-81e1-83e7b19f0d45" absoluteBounds="0.51500000000000012, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="5e24c912-f68b-4729-b6a2-dea615a6d62b" absoluteBounds="5.375, 1.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/projectXLinqDataContext/Post" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7515cd3b-855e-4c25-a078-842c7ff08780" absoluteBounds="5.39, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
