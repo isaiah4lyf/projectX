@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/ansTitle"
+        android:layout_alignParentStart="true"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Correct Answer: "
+        android:textColor="#FFFFFF"/>
+    <TextView
+        android:id="@+id/answer"
+        android:layout_toEndOf="@+id/ansTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textColor="#FF5733"/>
+    <TextView
+        android:id="@+id/pointsTitle"
+        android:layout_below="@+id/ansTitle"
+        android:layout_alignParentStart="true"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Total Points: "
+        android:textColor="#FFFFFF"/>
+    <TextView
+        android:id="@+id/points"
+        android:layout_toEndOf="@+id/pointsTitle"
+        android:layout_below="@+id/ansTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextVieoow"
+        android:textColor="#FF5733"/>
+</RelativeLayout>
